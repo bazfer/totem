@@ -13,14 +13,13 @@ class App extends Component {
     return (
       <div>
         <NavMenu/>
-        {this.props.data}
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  return { message: state.auth.message };
+  return { data: state.app.data };
 }
 
 export default connect(mapStateToProps, actions)(App);

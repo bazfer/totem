@@ -2,31 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
-class NavMenu extends Component {
-  renderLink() {
-    if (this.props.authenticated) {
-      // show a link to sign out
-      return( 
-        <div className="nav-item">
-          <Link className="nav-link" to="/signout">Sign Out</Link>
-        </div>
-      );
-    }
-  }
+// Nav Menu Components
+import NavTitle from './nav_title';
+import NavList from './nav_list';
+import NavSearch from './nav_search';
 
+export default class NavMenu extends Component {
   render() {
     return (
       <nav className="navbar navbar-light">
-        {this.renderLink()}
+        <NavTitle/>
       </nav>
     );
   }
 }
-
-function mapStateToProps(state) {
-  return {
-    authenticated: state.auth.authenticated
-  };
-}
-
-export default connect(mapStateToProps)(NavMenu);
