@@ -64,9 +64,7 @@ module.exports = (app) => {
   app.post('/signin', requireSignin, Authentication.signin);
   app.post('/signup', Authentication.signup);
   app.get('/', requireAuth, function(req, res) {
-    // the user data has been attached to the req in requireAuth
-    // in here we just extract it from the req
-    // and send it to the client to be rendered
+    // extract user data from req and send it to the client
     // console.log(req.user);
     let user = req.user;
     res.send(user);
