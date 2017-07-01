@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
+import NavAdd from './nav_add';
+
 class NavList extends Component {
   constructor(props){
 		super(props);
 	}
-
-  
 
   renderTabs() {
     return this.props.user.totems.map((totem, i) => {

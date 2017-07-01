@@ -1,0 +1,1 @@
+export const ADD_TOTEM = 'add_totem';

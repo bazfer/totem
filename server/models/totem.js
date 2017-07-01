@@ -3,11 +3,6 @@ const Schema =  mongoose.Schema;
 const Block = require('./block');
 
 const TotemSchema = new Schema({
-  seq: {
-    type: Number,
-    default: 0,
-    required: true
-  },
   // title
   title: {
     type: String,
@@ -16,7 +11,7 @@ const TotemSchema = new Schema({
   // block_count
   block_count: {
     type: Number,
-    required: true
+    required: true,
   },
 
   // pixel_height

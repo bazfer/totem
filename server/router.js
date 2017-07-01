@@ -12,52 +12,52 @@ const Block = require('./models/block');
 const Protoblock = require('./models/Protoblock');
 
 // TESTING PURPOSES
-const pb1 = {
+// const pb1 = {
 
-};
+// };
 
-const b1 = {
-  status: 'active',
-  time: 123,
-  notes: ['do I need a "notes" model?'],
-  milestone: false,
-  isBase: true,
-  isCrown: false,
-};
+// const b1 = {
+//   status: 'active',
+//   time: 123,
+//   notes: ['do I need a "notes" model?'],
+//   milestone: false,
+//   isBase: true,
+//   isCrown: false,
+// };
 
-const b2 = {
-  status: 'closed',
-  time: 123,
-  notes: 'test test test',
-  milestone: false,
-  isBase: true,
-  isCrown: false,
-};
+// const b2 = {
+//   status: 'closed',
+//   time: 123,
+//   notes: 'test test test',
+//   milestone: false,
+//   isBase: true,
+//   isCrown: false,
+// };
 
-const t2 = {
-  title: 'Learn to Skate',
-  block_count: 0,
-  pixel_height: 0,
-  time_total: 0,
-  completed: false,
-  blocks: [ b2 ]
-};
+// const t2 = {
+//   title: 'Learn to Skate',
+//   block_count: 0,
+//   pixel_height: 0,
+//   time_total: 0,
+//   completed: false,
+//   blocks: [ b2 ]
+// };
 
-const t1 = {
-  title: 'Learn to Etch',
-  block_count: 4,
-  pixel_height: 120,
-  time_total: 120,
-  completed: false,
-  blocks: [ b1 ]
-};
+// const t1 = {
+//   title: 'Learn to Etch',
+//   block_count: 4,
+//   pixel_height: 120,
+//   time_total: 120,
+//   completed: false,
+//   blocks: [ b1 ]
+// };
 
-const u1 = new User({
-  user_name: 'Du',
-  email: 'fu@fi.com',
-  password: 'du',
-  totems: [ t1 ]
-});
+// const u1 = new User({
+//   user_name: 'Du',
+//   email: 'fu@fi.com',
+//   password: 'du',
+//   totems: [ t1 ]
+// });
 
 module.exports = (app) => {
   // AUTHENTICATION
@@ -65,7 +65,7 @@ module.exports = (app) => {
   app.post('/signup', Authentication.signup);
   app.get('/', requireAuth, function(req, res) {
     // extract user data from req and send it to the client
-    console.log(req.user);
+  
     let user = req.user;
     res.send(user);
   });
@@ -136,8 +136,23 @@ module.exports = (app) => {
   // });
 
   app.post('/insert_totem', function(req, res) {
-    let totem = req.body;
-    let id = req.headers._id;
+    // only data provided by client to insert a totem
+    // all other fields should have defaults
+    console.log(req);
+    // compose totem
+    const totem = {
+      title: req.body.title,
+      block_count: 0,
+      pixel_height: 0,
+      time_total: 0,
+      completed: false,
+      blocks: []
+    };
+    
+    // user id
+    let id = req.body.id;
+
+    // query
     User.findOne({ _id: id })
       .then((user) => {
         user.totems.push(totem);
