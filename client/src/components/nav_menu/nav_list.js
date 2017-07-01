@@ -19,10 +19,13 @@ class NavList extends Component {
 }
 
 function mapStateToProps(state) {
-  // console.log(state.app.data);
+  
   return {
-    data: state.app.data
+    authenticated: state.auth.authenticated,
+    user: state.user
   };
+
+  
 }
 
 export default connect(mapStateToProps)(NavList)

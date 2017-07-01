@@ -6,10 +6,11 @@ import NavMenu from './nav_menu/nav_menu';
 
 class App extends Component {
   componentWillMount() {
-    this.props.loadUserData();
+    this.props.fetchUserData();
   }
 
   render() {
+    
     return (
       <div>
         <NavMenu/>
@@ -19,7 +20,9 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-  return { data: state.app.data };
+  return { user: state.app.user };
+
+  
 }
 
 export default connect(mapStateToProps, actions)(App);

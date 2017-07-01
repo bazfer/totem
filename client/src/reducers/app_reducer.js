@@ -1,11 +1,22 @@
-import { LOAD_USER_DATA } from '../actions/types';
+import { FETCH_USER_DATA } from '../actions/types';
 
-export default function(state = {}, action) {
+const INITIAL_STATE = { user: {
+  _id: '',
+  updatedAt: '',
+  createdAt: '', 
+  user_name: '',
+  email: '',
+  password: '',
+  totems: []
+} };
+
+export default function(state = INITIAL_STATE, action) {
   switch(action.type) {
-    case LOAD_USER_DATA:
-      return { ...state, data: action.payload };
+    case FETCH_USER_DATA:
+      console.log('REDUCER ' + JSON.stringify(action.payload.data))
+      return { ...state, user: action.payload.data };
+    default:
+      return state;
   }
-
-  return state;
 }
 

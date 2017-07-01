@@ -8,6 +8,8 @@ import NavList from './nav_list';
 import NavSearch from './nav_search';
 
 export default class NavMenu extends Component {
+  
+
   render() {
     return (
       <nav className="navbar navbar-light">

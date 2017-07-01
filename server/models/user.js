@@ -26,7 +26,10 @@ const userSchema = new Schema({
 // on save hook, encrypt password
 // before saving a model, run this function
 userSchema.pre('save', function(next) {
-  if(this.isModified("password")){
+  if(!this.isModified("password")){
+    console.log('password not modified');
+    return next();
+  }
     const user = this;
   // generate a salt
     bcrypt.genSalt(10, function(err, salt) {
@@ -41,7 +44,7 @@ userSchema.pre('save', function(next) {
         next();
       });
     });
-  }
+  
   // get access to the user model
 });
 

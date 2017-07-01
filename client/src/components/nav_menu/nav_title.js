@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import { fetchUserData } from '../../actions';
 
 class NavTitle extends Component {
 
+  componentDidMount() {
+    this.props.fetchUserData();
+  }
 
   renderLink() {
-    if (this.props.authenticated) {
-      // show a link to sign out
+    if (this.props.authenticated && this.props.user) {
+      
       return( 
         <div className="nav-item">
-          
+          {this.props.user.user_name}
           <Link className="nav-link" to="/signout">Sign Out</Link>
         </div>
       );
@@ -28,11 +32,11 @@ class NavTitle extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state.app.data);
+  
   return {
     authenticated: state.auth.authenticated,
-    data: state.app.data
+    user: state.app.user
   };
 }
 
-export default connect(mapStateToProps)(NavTitle);
+export default connect(mapStateToProps, { fetchUserData })(NavTitle);

@@ -20,7 +20,6 @@ class Header extends Component {
   render() {
     return (
       <nav className="navbar navbar-light">
-        <h1>Totem</h1>
         <ul className="nav navbar-nav">
           {this.renderLinks()}
         </ul>

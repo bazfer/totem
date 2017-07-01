@@ -65,7 +65,7 @@ module.exports = (app) => {
   app.post('/signup', Authentication.signup);
   app.get('/', requireAuth, function(req, res) {
     // extract user data from req and send it to the client
-    // console.log(req.user);
+    console.log(req.user);
     let user = req.user;
     res.send(user);
   });
@@ -84,7 +84,7 @@ module.exports = (app) => {
     .catch((err) => {
       console.log(err);
       res.status('Error: ' + err);
-    })
+    });
   });
 
   // Find one Totem
@@ -98,7 +98,7 @@ module.exports = (app) => {
     .catch((err) => {
       console.log(err);
       res.status('Error: ' + err);
-    })
+    });
   });
 
   // Find one Block
@@ -106,6 +106,7 @@ module.exports = (app) => {
     let totem = req.headers.totem_index;
     let block = req.headers.block_index;
     let id = req.headers._id;
+    
     User.findOne({ _id: id })
       .then((data) => {
         res.json(data.totems[totem].blocks[block]);
@@ -113,25 +114,42 @@ module.exports = (app) => {
     .catch((err) => {
       console.log(err);
       res.status('Error: ' + err);
-    })
+    });
   });
 
   // Insert a Totem
-  app.put('/insert_totem', function(req, res) {
+  // app.put('/insert_totem', function(req, res) {
+  //   let totem = req.body;
+  //   let id = req.headers._id;
+  //   User.findOneAndUpdate(
+  //     { _id: id }, 
+  //     { $push: { totems: totem }},
+  //     { new: true },
+  //     function(err, user) {
+  //       if(err) {
+  //         console.log(err);
+  //         res.status(err);
+  //       }
+  //       res.json(user);
+  //     }
+  //   );
+  // });
+
+  app.post('/insert_totem', function(req, res) {
     let totem = req.body;
     let id = req.headers._id;
-    User.findOneAndUpdate(
-      { _id: id }, 
-      { $push: { totems: totem }},
-      { new: true },
-      function(err, user) {
-        if(err) {
-          console.log(err);
-          res.status(err);
-        }
-        res.json(user);
-      }
-    );
+    User.findOne({ _id: id })
+      .then((user) => {
+        user.totems.push(totem);
+        return user.save();
+      })
+      .then(() => User.findOne({ _id: id })
+      .then((data) => {
+        res.json(data);
+      }))
+    .catch((err) => {
+      console.log(err);
+    });
   });
     
   app.post('/insert_block', function(req, res) {
@@ -143,14 +161,15 @@ module.exports = (app) => {
         user.totems[totem].blocks.push(block);
         return user.save();
       })
+      .then(() => User.findOne({ _id: id })
       .then((data) => {
-        res.json(data.totems[totem].blocks);
-      })
+        res.json(data);
+      }))
     .catch((err) => {
       console.log(err);
-      res.status('Error: ' + err);
-    })
+    });
   });
+
 
   // Delete a Totem
   app.all('/delete_totem', function(req, res) {
@@ -162,13 +181,14 @@ module.exports = (app) => {
         user.totems.pull({ _id: totem_id });
         return user.save();
       })
+      .then(() => User.findOne({ _id: id })
       .then((data) => {
         res.json(data.totems);
-      })
+      }))
     .catch((err) => {
       console.log(err);
       res.status('Error: ' + err);
-    })
+    });
   });
   
   // Delete a Block
@@ -182,9 +202,10 @@ module.exports = (app) => {
         user.totems[totem].blocks.pull({ _id: block_id });
         return user.save();
       })
+      .then(() => User.findOne({ _id: id })
       .then((data) => {
         res.json(data.totems[totem].blocks);
-      })
+      }))
     .catch((err) => {
       console.log(err);
       res.status('Error: ' + err);
