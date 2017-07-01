@@ -13,7 +13,6 @@ const INITIAL_STATE = { user: {
 export default function(state = INITIAL_STATE, action) {
   switch(action.type) {
     case FETCH_USER_DATA:
-      console.log('REDUCER ' + JSON.stringify(action.payload.data))
       return { ...state, user: action.payload.data };
     default:
       return state;

@@ -9,9 +9,8 @@ class NavTitle extends Component {
     this.props.fetchUserData();
   }
 
-  renderLink() {
+  renderTitle() {
     if (this.props.authenticated && this.props.user) {
-      
       return( 
         <div className="nav-item">
           {this.props.user.user_name}
@@ -25,7 +24,7 @@ class NavTitle extends Component {
     
     return (
       <nav className="navbar navbar-light">
-        {this.renderLink()}
+        {this.renderTitle()}
       </nav>
     );
   }

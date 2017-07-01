@@ -14,6 +14,8 @@ export default class NavMenu extends Component {
     return (
       <nav className="navbar navbar-light">
         <NavTitle/>
+        <NavList/>
+        
       </nav>
     );
   }
