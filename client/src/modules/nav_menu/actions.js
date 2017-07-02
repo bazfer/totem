@@ -49,3 +49,17 @@ export function addTotem({ title }) {
 //       // handle errors
 //   }
 // }
+
+export function fetchUserData() {
+  return function(dispatch) {
+    axios.get(ROOT_URL, {
+      headers: { authorization: localStorage.getItem('token') }
+    })
+      .then(response => {
+        dispatch({
+          type: FETCH_USER_DATA,
+          payload: response
+        });
+      });
+  }
+}

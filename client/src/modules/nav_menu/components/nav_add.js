@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
-import { addTotem } from './actions';
+import { addTotem } from '../actions';
 
 class NavAdd extends Component {
   onSubmit(props) {

@@ -6,21 +6,24 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import reduxThunk from 'redux-thunk';
 
-import Site from './components/site';
-import Signin from './components/auth/signin';
-import Signout from './components/auth/signout';
-import Signup from './components/auth/signup';
-import App from './components/app';
-import RequireAuth from './components/auth/require_auth';
-import Landing from './components/landing';
-import reducers from './reducers';
-import { AUTH_USER } from './actions/types';
+import Site from './modules/site';
+import Signin from './modules/auth/components/signin';
+import Signout from './modules/auth/components/signout';
+import Signup from './modules/auth/components/signup';
+import App from './modules/app';
+import RequireAuth from './modules/auth/components/require_auth';
+import Landing from './modules/landing';
+
+import rootReducer from './root_reducer';
+// import reducers from './reducers';
+import { AUTH_USER } from './modules/auth/action_types';
+// import { AUTH_USER } from './actions/types';
 
 
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 
-const store = createStoreWithMiddleware(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStoreWithMiddleware(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 const token = localStorage.getItem('token');
 

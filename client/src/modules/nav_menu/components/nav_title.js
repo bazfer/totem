@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { fetchUserData } from '../../actions';
+import { fetchUserData } from '../actions';
 
 class NavTitle extends Component {
 

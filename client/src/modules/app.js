@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../actions';
+import * as actions from './auth/actions';
 
-import NavMenu from './nav_menu/nav_menu';
+import NavMenu from './nav_menu/components/nav_menu';
 
 class App extends Component {
   componentWillMount() {
@@ -21,8 +21,6 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return { user: state.app.user };
-
-  
 }
 
 export default connect(mapStateToProps, actions)(App);
