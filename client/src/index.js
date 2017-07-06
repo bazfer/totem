@@ -10,7 +10,7 @@ import Site from './modules/site';
 import Signin from './modules/auth/components/signin';
 import Signout from './modules/auth/components/signout';
 import Signup from './modules/auth/components/signup';
-import App from './modules/app';
+import App from './modules/app/app';
 import RequireAuth from './modules/auth/components/require_auth';
 import Landing from './modules/landing';
 
@@ -40,6 +40,9 @@ ReactDOM.render(
         <Route path="/signout" component={Signout} />
         <Route path="/signup" component={Signup} />
         <Route path="/app" component={RequireAuth(App)} />
+        <Route path="/app/:id" component={RequireAuth(App)} />
+
+
       </Route>
     </Router>
   </Provider>

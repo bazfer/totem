@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, FETCH_USER_DATA } from './action_types';
+import { AUTH_USER, UNAUTH_USER, AUTH_ERROR } from './action_types';
 
 const ROOT_URL = 'http://localhost:3090';
 
@@ -10,7 +10,6 @@ export function signinUser({ email, password }) {
     axios.post(`${ROOT_URL}/signin`, { email, password })
       .then(response => {
         // if request is good
-        
         // - update state to indicate user is authenticated
         dispatch({ type: AUTH_USER });
         // dispatch({ type: FETCH_USER_DATA , payload: response });
@@ -58,16 +57,16 @@ export function signoutUser() {
   return { type: UNAUTH_USER };
 }
 
-export function fetchUserData() {
-  return function(dispatch) {
-    axios.get(ROOT_URL, {
-      headers: { authorization: localStorage.getItem('token') }
-    })
-      .then(response => {
-        dispatch({
-          type: FETCH_USER_DATA,
-          payload: response
-        });
-      });
-  }
-}
+// export function fetchUserData() {
+//   return function(dispatch) {
+//     axios.get(ROOT_URL, {
+//       headers: { authorization: localStorage.getItem('token') }
+//     })
+//       .then(response => {
+//         dispatch({
+//           type: FETCH_USER_DATA,
+//           payload: response
+//         });
+//       });
+//   }
+// }

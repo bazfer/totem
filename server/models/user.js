@@ -18,7 +18,10 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  recent_totem: Number, 
+  recent_totem: {
+    type: Number,
+    default: 0
+  }, 
   totems: [Totem]
 }, { timestamps: true });
 
@@ -27,7 +30,7 @@ const userSchema = new Schema({
 // before saving a model, run this function
 userSchema.pre('save', function(next) {
   if(!this.isModified("password")){
-    console.log('password not modified');
+    // if password is not modified, exit early
     return next();
   }
     const user = this;

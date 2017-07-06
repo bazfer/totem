@@ -1,14 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
+
 import { addTotem } from '../actions';
 
 class NavAdd extends Component {
-  onSubmit(props) {
-    // console.log(this.props);
-    this.props.addTotem(props);
+  static contextTypes = {
+    router: PropTypes.object
   }
+
+  onSubmit(props) {
+    this.props.addTotem(props)
+      // .then(() => {
+      //   this.context.router.push('/app');
+      // })
+  }
+
 
   render() {
     const { fields: { title }, handleSubmit } = this.props;
@@ -28,7 +36,7 @@ class NavAdd extends Component {
 function validate(values) {
   const errors = {};
   if (!values.title) {
-    errors.title = 'Enter a title'
+    errors.title = 'The Title of a Totem cannot be Nothing'
   }
   return errors;
 }
