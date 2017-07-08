@@ -2,7 +2,8 @@ import axios from 'axios';
 import { browserHistory } from 'react-router';
 import {  FETCH_USER_DATA ,
           ADD_TOTEM, 
-          ADD_TOTEM_ERROR
+          ADD_TOTEM_ERROR,
+          CHANGE_ACTIVE_TOTEM
 } from './action_types';
 
 const ROOT_URL = 'http://localhost:3090';
@@ -40,7 +41,7 @@ export function addTotem({ title }) {
       // handle errors
       .catch(error => {
         console.log(error);
-        //dispatch(addTotemError(error.response.data.error));
+        dispatch(addTotemError(error.response.data.error));
       });
   }
 }
@@ -49,5 +50,12 @@ export function addTotemError(error) {
   return {
     type: ADD_TOTEM_ERROR,
     payload: error
+  }
+}
+
+export function changeActiveTotem(i){
+  return {
+    type: CHANGE_ACTIVE_TOTEM,
+    payload: i
   }
 }

@@ -40,7 +40,7 @@ module.exports = (app) => {
   });
 
   // Find one Totem
-  app.get('/find_totem', requireAuth, function(req, res) {
+  app.get('/totems/:', requireAuth, function(req, res) {
     let totem = req.headers.totem_index;
     let id = req.user._id;
     User.findOne({ _id: id })
