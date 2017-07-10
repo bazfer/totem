@@ -1,25 +1,21 @@
-import {  FETCH_USER_DATA, 
+import {  FETCH_APP_DATA, 
           ADD_TOTEM, 
           ADD_TOTEM_ERROR, 
           CHANGE_ACTIVE_TOTEM
 } from './action_types';
 
 const INITIAL_STATE = {
-  user_name: '',
   totems: new Array,
-  active_totem: new Number,
-  totem: {}
+  active_totem: 0
   // ticking: new Boolean
 }
 
 export default function(state = INITIAL_STATE, action) {
-  
   switch(action.type) {
-    case FETCH_USER_DATA:
+    case FETCH_APP_DATA:
       return { ...state, 
-                  user_name: action.payload.data.user_name,
-                  totems: action.payload.data.totems,
-                  active_totem: action.payload.data.recent_totem
+                  totems: action.payload.totems,
+                  active_totem: action.payload.active_totem
                   // ticking:
       };
     case ADD_TOTEM:

@@ -1,5 +1,9 @@
 // APP
-export const FETCH_USER_DATA = 'fetch_user_data';
+export const FETCH_APP_DATA = 'fetch_app_data';
+
+// USER
+// look for action in the user's module reducer
+export const FETCH_USER_DATA = 'fetch_user_data'
 
 // TOTEMS 
 export const ADD_TOTEM = 'add_totem';

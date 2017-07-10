@@ -6,6 +6,7 @@ export default class NavTitle extends Component {
   renderTitle() {
       return( 
         <div className="nav-item">
+          Hello Totem
           {this.props.user_name}
           <Link className="nav-link" to="/signout">Sign Out</Link>
         </div>

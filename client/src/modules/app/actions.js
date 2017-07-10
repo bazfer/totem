@@ -1,24 +1,32 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-import {  FETCH_USER_DATA ,
+import {  FETCH_APP_DATA ,
           ADD_TOTEM, 
           ADD_TOTEM_ERROR,
-          CHANGE_ACTIVE_TOTEM
+          CHANGE_ACTIVE_TOTEM,
+          TEST_TWO_ROUTES
 } from './action_types';
 
 const ROOT_URL = 'http://localhost:3090';
 
-export function fetchUserData() {
+export function fetchAllData() {
   return function(dispatch) {
     axios.get(ROOT_URL, {
       headers: { authorization: localStorage.getItem('token') }
     })
       .then(response => {
-        dispatch({
-          type: FETCH_USER_DATA,
-          payload: response
-        });
-        
+        // model and deliver app data
+        const appData = {
+          totems: response.data.totems,
+          active_totem: response.data.recent_totem
+        } 
+        dispatch({ type: FETCH_APP_DATA, payload: appData })
+
+        // model and deliver user data
+        const userData = {
+          user_name: response.data.user_name
+        }
+        // dispatch({ type: FETCH_USER_DATA, payload: response })
       });
   }
 }
@@ -53,9 +61,7 @@ export function addTotemError(error) {
   }
 }
 
-export function changeActiveTotem(i){
-  return {
-    type: CHANGE_ACTIVE_TOTEM,
-    payload: i
-  }
-}
+export const changeActiveTotem = (id) => ({
+  type: CHANGE_ACTIVE_TOTEM,
+  payload: id
+})

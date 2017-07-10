@@ -3,23 +3,17 @@ import { connect } from 'react-redux';
 import * as actions from './actions';
 
 import NavTitle from './components/nav_title';
-import NavList from './components/nav_list';
-import NavSearch from './components/nav_search';
-import NavAdd from './components/nav_add';
-import TotemView from './components/totem_view';
+// import NavList from './components/nav_list';
+// import NavSearch from './components/nav_search';
+// import NavAdd from './components/nav_add';
+// import TotemView from './components/totem_view';
+import Menu from './components/menu'
+
+import Header from '../header'
 
 class App extends Component {
   componentDidMount() {
-    console.log(this.props);
-    this.props.fetchUserData();
-  }
-
-  handleTotemTabClick(i) {
-    // e.preventDefault();
-    console.log('got it!');
-    console.log(i);
-    console.log(this);
-    // this.props.changeActiveTotem(i);
+    this.props.fetchAllData();
   }
 
   render() {
@@ -27,13 +21,8 @@ class App extends Component {
       return (
         <div>
           <nav className="navbar navbar-light">
-            <NavTitle user_name = {this.props.user_name} />
-            <NavAdd />
-            <NavList totems = {this.props.totems} 
-                     active_totem = {this.props.active_totem}
-                     onChange = {this.handleTotemTabClick} 
-            />
-            <TotemView />
+            <Header />
+            <Menu />
           </nav>
         </div>
       );
@@ -43,6 +32,7 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return { 
+    authenticated: state.auth.authenticated,
     user_name: state.app.user_name,
     totems: state.app.totems,
     active_totem: state.app.active_totem
