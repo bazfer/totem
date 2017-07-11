@@ -10,6 +10,7 @@ const MenuTotem = ({ onClick, title, active }) => {
     <li
       onClick={onClick} 
       style={active ? activeStyle : null}
+      className='menu-item'
     >
       {title}
     </li>

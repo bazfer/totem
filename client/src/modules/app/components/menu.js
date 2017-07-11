@@ -3,10 +3,10 @@ import MenuController from '../controllers/MenuController'
 import AddTotemController from '../controllers/AddTotemController'
 
 const Menu = () => (
-  <div>
+  <nav className='menu'>
     <MenuController />
     <AddTotemController />
-  </div>
+  </nav>
 )
 
 export default Menu

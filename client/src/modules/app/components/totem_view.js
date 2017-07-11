@@ -10,12 +10,13 @@ class TotemView extends Component {
   render() {
     if(this.props.totem){
       return (
-        <div style={viewStyle}>{this.props.totem.title}</div>
+        <div className='totem-view' style={viewStyle}>{this.props.totem.title}</div>
       );
     } else {
       return(
         <div style={viewStyle}>
-          
+          Go on, create your first Totem.
+          {/*Here goes the blank slate totem view, encourage to start a totem*/}
         </div>
       )
     }

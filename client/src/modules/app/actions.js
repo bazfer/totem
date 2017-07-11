@@ -24,6 +24,8 @@ export function fetchAllData() {
         dispatch({ type: FETCH_APP_DATA, payload: appData })
 
         // model and deliver user data
+        // perhaps there's a helper function to be written
+        // find provided keys, return object with key-value pairs
         const userData = {
           user_name: response.data.user_name,
           email: response.data.email

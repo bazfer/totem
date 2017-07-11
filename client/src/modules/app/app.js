@@ -12,17 +12,15 @@ class App extends Component {
   }
 
   render() {
-    // if (this.props.authenticated) {
+    if (this.props.authenticated) {
       return (
-        <div>
-          <nav className="navbar navbar-light">
-            <Header />
-            <Menu />
-            <TotemView />
-          </nav>
+        <div className='app'>
+          <Menu />
+          <TotemView />
         </div>
       );
-    // }
+    } 
+    // NEED TO ADD REDIRECTING IF NOT LOGGED IN
   }
 }
 

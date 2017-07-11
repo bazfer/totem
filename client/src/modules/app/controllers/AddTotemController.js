@@ -12,22 +12,24 @@ class AddTotemController extends Component {
 
   onSubmit(props) {
     this.props.addTotem(props)
-      // .then(() => {
-      //   this.context.router.push('/app');
-      // })
+    // currently happening sync, if there's an error
+    // or if async action takes too long
+    // clearing out the form will visibly happen before
+    // totem creation and display
+    // return a promise from addTotem to make the statement thenable
+    this.props.resetForm()
   }
-
 
   render() {
     const { fields: { title }, handleSubmit } = this.props;
     return (
-      <form className='nav-menu add-form' onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-        <label>title</label>
-        <input type='text' className='form-control' {...title} />
-        <div className='text-help'>
+      <form className='menu-add-item' onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+        {/*<label className='input-label'>title</label>*/}
+        <input placeholder='Create a Totem' type='text' className='input-field' {...title} />
+        <div className='input-nudge'>
             { title.touched ? title.error : null }
         </div>
-        <button type='submit' className='btn btn-primary'>Submit</button>
+        <button type='submit' className='button-submit'>Submit</button>
       </form>
     );
   }
@@ -36,7 +38,7 @@ class AddTotemController extends Component {
 function validate(values) {
   const errors = {};
   if (!values.title) {
-    errors.title = 'The Title of a Totem cannot be Nothing'
+    errors.title = 'Please enter a title for this totem.'
   }
   return errors;
 }

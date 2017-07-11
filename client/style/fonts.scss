@@ -1,0 +1,21 @@
+// @import "../webfonts/museo_300/300";
+@font-face {
+    font-family: 'Museo300-Regular';
+    src: url('fonts/Museo300-Regular-webfont.woff2') format('woff2'), url('fonts/Museo300-Regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Museo500-Regular';
+    src: url('fonts/Museo500-Regular-webfont.woff2') format('woff2'), url('fonts/Museo500-Regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Museo700-Regular';
+    src: url('fonts/Museo700-Regular-webfont.woff2') format('woff2'), url('fonts/Museo700-Regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

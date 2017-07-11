@@ -1,1 +1,15 @@
-@import 'nav_menu';
+/* GLOBALS */
+
+@import 'reset';
+@import 'fonts';
+@import 'color-palette';
+html {
+    font-size: 24px;
+    font-family: Museo300-Regular, Helvetica, sans-serif;
+}
+
+
+/* MODULES */
+
+@import 'app';
+@import 'menu';

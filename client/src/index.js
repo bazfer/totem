@@ -6,7 +6,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import reduxThunk from 'redux-thunk';
 
-
 import Site from './modules/site';
 import Signin from './modules/auth/components/signin';
 import Signout from './modules/auth/components/signout';
@@ -18,8 +17,6 @@ import TotemView from './modules/app/components/totem_view';
 
 import rootReducer from './root_reducer';
 import { AUTH_USER } from './modules/auth/action_types';
-
-
 
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 
@@ -35,7 +32,6 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path="/" component={Site}>
-        
         <Route path="/signin" component={Signin} />
         <Route path="/signout" component={Signout} />
         <Route path="/signup" component={Signup} />
@@ -45,4 +41,4 @@ ReactDOM.render(
       </Route>
     </Router>
   </Provider>
-  , document.querySelector('.container'));
+  , document.getElementById("root"));

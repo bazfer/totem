@@ -6,13 +6,14 @@ import MenuTotem from './menu_totem'
 
 const MenuList = ({ totems, onTotemClick, activeTotem, userName }) => { 
   return(
-    <div>
-      <div>
-        Hello Totem
-        {userName}
+    <div className='menu-list'>
+      <div className='menu-list-header'>
+        <div className='header-text'>
+          {userName}
+        </div>
         <Link className="nav-link" to="/signout">Sign Out</Link>
       </div>
-      <ul>
+      <ul className='menu-list-body'>
         {totems.map((totem) => 
           <MenuTotem 
             key={totem.id} 
@@ -34,7 +35,8 @@ MenuList.propTypes = {
     }).isRequired
   ).isRequired,
   onTotemClick: PropTypes.func.isRequired,
-  activeTotem: PropTypes.number.isRequired
+  activeTotem: PropTypes.number.isRequired,
+  userName: PropTypes.string.isRequired
 };
 
 export default MenuList;
