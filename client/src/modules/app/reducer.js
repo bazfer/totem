@@ -6,7 +6,8 @@ import {  FETCH_APP_DATA,
 
 const INITIAL_STATE = {
   totems: new Array,
-  active_totem: 0
+  active_totem: 0,
+  totem: {}
   // ticking: new Boolean
 }
 
@@ -15,13 +16,13 @@ export default function(state = INITIAL_STATE, action) {
     case FETCH_APP_DATA:
       return { ...state, 
                   totems: action.payload.totems,
-                  active_totem: action.payload.active_totem
+                  active_totem: action.payload.active_totem,
                   // ticking:
       };
     case ADD_TOTEM:
       return { ...state, 
-                  totems: action.payload.data.totems,
-                  active_totem: action.payload.data.recent_totem,
+                  totems: action.payload.totems,
+                  active_totem: action.payload.active_totem,
     }
     case ADD_TOTEM_ERROR:
       return { ...state, error: 'FILL HERE'}

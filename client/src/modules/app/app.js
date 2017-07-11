@@ -4,6 +4,7 @@ import * as actions from './actions';
 
 import Menu from './components/menu'
 import Header from '../header'
+import TotemView from './components/totem_view'
 
 class App extends Component {
   componentDidMount() {
@@ -17,6 +18,7 @@ class App extends Component {
           <nav className="navbar navbar-light">
             <Header />
             <Menu />
+            <TotemView />
           </nav>
         </div>
       );

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-import {  FETCH_APP_DATA ,
+import {  FETCH_APP_DATA,
+          FETCH_USER_DATA,
           ADD_TOTEM, 
           ADD_TOTEM_ERROR,
           CHANGE_ACTIVE_TOTEM,
@@ -10,7 +11,7 @@ import {  FETCH_APP_DATA ,
 const ROOT_URL = 'http://localhost:3090';
 
 export function fetchAllData() {
-  return function(dispatch) {
+  return function(dispatch, getState) {
     axios.get(ROOT_URL, {
       headers: { authorization: localStorage.getItem('token') }
     })
@@ -18,15 +19,17 @@ export function fetchAllData() {
         // model and deliver app data
         const appData = {
           totems: response.data.totems,
-          active_totem: response.data.recent_totem
+          active_totem: response.data.recent_totem,
         } 
         dispatch({ type: FETCH_APP_DATA, payload: appData })
 
         // model and deliver user data
         const userData = {
-          user_name: response.data.user_name
+          user_name: response.data.user_name,
+          email: response.data.email
         }
-        // dispatch({ type: FETCH_USER_DATA, payload: response })
+        
+        dispatch({ type: FETCH_USER_DATA, payload: userData })
       });
   }
 }
@@ -38,11 +41,11 @@ export function addTotem({ title }) {
             headers: { authorization: localStorage.getItem('token')}
           }) 
       .then(response => {
-        // update state
-        dispatch({ 
-          type: ADD_TOTEM,
-          payload: response
-       });
+        const addData = {
+          totems: response.data.totems,
+          active_totem: response.data.recent_totem
+        }
+        dispatch({ type: ADD_TOTEM, payload: addData });
         // display newly create totem - use browserHistory.push
         browserHistory.push('/app');
       })

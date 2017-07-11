@@ -14,7 +14,9 @@ class TotemView extends Component {
       );
     } else {
       return(
-        <div style={viewStyle}>Loading</div>
+        <div style={viewStyle}>
+          
+        </div>
       )
     }
   }
