@@ -43,6 +43,14 @@
             align-items: center;
             padding-left: 1.5rem;
             color: $blue-20;
+            display: flex;
+            justify-content: space-between;
+            button {
+                margin-right: 0.5rem;
+            }
+            i {
+                color: $blue-40;
+            }
         }
         .active-item {
             background-color: $red-80;

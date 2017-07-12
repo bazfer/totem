@@ -5,13 +5,13 @@ import {  FETCH_APP_DATA,
           ADD_TOTEM, 
           ADD_TOTEM_ERROR,
           CHANGE_ACTIVE_TOTEM,
-          TEST_TWO_ROUTES
+          DELETE_TOTEM
 } from './action_types';
 
 const ROOT_URL = 'http://localhost:3090';
 
 export function fetchAllData() {
-  return function(dispatch, getState) {
+  return function(dispatch) {
     axios.get(ROOT_URL, {
       headers: { authorization: localStorage.getItem('token') }
     })
@@ -54,7 +54,7 @@ export function addTotem({ title }) {
       // handle errors
       .catch(error => {
         console.log(error);
-        dispatch(addTotemError(error.response.data.error));
+        // dispatch(addTotemError(error.response.data.error));
       });
   }
 }
@@ -70,3 +70,20 @@ export const changeActiveTotem = (id) => ({
   type: CHANGE_ACTIVE_TOTEM,
   payload: id
 })
+
+export const deleteTotem = (id) => {
+  return function(dispatch) {
+    axios.delete(`${ROOT_URL}/delete_totem`, {
+      data: { id },
+      headers: { authorization: localStorage.getItem('token')}
+    })
+    .then(response => {
+      console.log(response);
+      dispatch({type: DELETE_TOTEM, payload: response.data});
+      browserHistory.push('/app')
+    })
+    .catch(error => {
+      console.log(error)
+    });
+  }
+}

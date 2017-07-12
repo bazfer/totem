@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { changeActiveTotem } from '../actions'
+import { changeActiveTotem, deleteTotem } from '../actions'
 
 import MenuList from '../components/menu_list'
 
@@ -14,7 +14,8 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-  onTotemClick: changeActiveTotem
+  onTotemClick: changeActiveTotem,
+  onDeleteClick: deleteTotem
 }
 
 const MenuController = connect(

@@ -4,21 +4,27 @@ import { Link } from 'react-router'
 
 import MenuTotem from './menu_totem'
 
-const MenuList = ({ totems, onTotemClick, activeTotem, userName }) => { 
-  return(
-    <div className='body'>
-      <ul>
-        {totems.map((totem) => 
-          <MenuTotem 
-            key={totem.id} 
-            {...totem} 
-            active={activeTotem == totem.id} 
-            onClick={() => onTotemClick(totem.id)}
-          />
-        )}
-      </ul>
-    </div>
-  )
+const MenuList = ({ 
+  totems, 
+  onTotemClick,
+  onDeleteClick, 
+  activeTotem, 
+  userName }) => { 
+    return(
+      <div className='body'>
+        <ul>
+          {totems.map((totem) => 
+            <MenuTotem 
+              key={totem.id} 
+              {...totem} 
+              active={activeTotem == totem.id} 
+              onTotemClick={() => onTotemClick(totem.id)}
+              onDeleteClick={() => onDeleteClick(totem.id)}
+            />
+          )}
+        </ul>
+      </div>
+    )
 }
 
 MenuList.propTypes = {
@@ -29,6 +35,7 @@ MenuList.propTypes = {
     }).isRequired
   ).isRequired,
   onTotemClick: PropTypes.func.isRequired,
+  onDeleteClick: PropTypes.func.isRequired,
   activeTotem: PropTypes.number.isRequired,
   userName: PropTypes.string.isRequired
 };

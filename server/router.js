@@ -143,9 +143,10 @@ module.exports = (app) => {
 
 
   // Delete a Totem
-  app.all('/delete_totem', requireAuth, function(req, res) {
-    let totem = req.headers.totem_index;
+  app.delete('/delete_totem', requireAuth, function(req, res) {
+    let totem = req.body.id;
     let id = req.user._id;
+    console.log(req);
     User.findOne({ _id: id })
       .then((user) => {
         let totem_id = user.totems[totem]._id;
@@ -184,10 +185,6 @@ module.exports = (app) => {
   });
 
 }
-
-
-
-
 
 // TESTING PURPOSES
 // const pb1 = {

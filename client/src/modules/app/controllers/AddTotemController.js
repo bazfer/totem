@@ -30,7 +30,7 @@ class AddTotemController extends Component {
         <input placeholder='Create a Totem' type='text' className='input-totem' {...title} />
         <button type='submit' className='bt'>
           {/*<img src={addButton} />*/}
-          <i className='material-icons bt-base'>add</i>
+          <i className='material-icons'>add</i>
         </button>
         <div className='input-nudge'>
             { title.touched ? title.error : null }

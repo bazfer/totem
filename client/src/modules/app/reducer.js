@@ -1,7 +1,8 @@
 import {  FETCH_APP_DATA, 
           ADD_TOTEM, 
           ADD_TOTEM_ERROR, 
-          CHANGE_ACTIVE_TOTEM
+          CHANGE_ACTIVE_TOTEM,
+          DELETE_TOTEM
 } from './action_types';
 
 const INITIAL_STATE = {
@@ -30,6 +31,11 @@ export default function(state = INITIAL_STATE, action) {
       return { ...state,
                   active_totem: action.payload
       }
+    case DELETE_TOTEM:
+      return{ ...state,
+                  totems: action.payload,
+                  active_totem: 0
+                }
     default:
       return state;
   }

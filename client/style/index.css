@@ -152,9 +152,13 @@ html {
 ::-webkit-scrollbar {
   display: none; }
 
-.bt i {
-  color: #7aafd4;
-  font-size: 1.5rem; }
+.bt {
+  background-color: transparent;
+  border: none;
+  padding: 0rem; }
+  .bt i {
+    color: #7aafd4;
+    font-size: 1.5rem; }
 
 /* MODULES */
 .app {
@@ -196,7 +200,13 @@ html {
       justify-content: left;
       align-items: center;
       padding-left: 1.5rem;
-      color: #deebf4; }
+      color: #deebf4;
+      display: flex;
+      justify-content: space-between; }
+      .menu .body li button {
+        margin-right: 0.5rem; }
+      .menu .body li i {
+        color: #bdd7e9; }
     .menu .body .active-item {
       background-color: #e7777e; }
   .menu .footer {
