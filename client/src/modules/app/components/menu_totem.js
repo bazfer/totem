@@ -1,16 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const activeStyle = {
-  backgroundColor: '#5F9EA0'
-}
-
 const MenuTotem = ({ onClick, title, active }) => {
   return ( 
     <li
       onClick={onClick} 
-      style={active ? activeStyle : null}
-      className='menu-item'
+      className={active ? "active-item" : "item"}
     >
       {title}
     </li>

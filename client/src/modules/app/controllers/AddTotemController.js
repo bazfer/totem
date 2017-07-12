@@ -5,6 +5,8 @@ import { reduxForm } from 'redux-form';
 
 import { addTotem } from '../actions';
 
+const addButton = '../../../../assets/bt-add.svg';
+
 class AddTotemController extends Component {
   static contextTypes = {
     router: PropTypes.object
@@ -23,13 +25,16 @@ class AddTotemController extends Component {
   render() {
     const { fields: { title }, handleSubmit } = this.props;
     return (
-      <form className='menu-footer' onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+      <form className='footer' onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         {/*<label className='input-label'>title</label>*/}
-        <input placeholder='Create a Totem' type='text' className='input-field' {...title} />
+        <input placeholder='Create a Totem' type='text' className='input-totem' {...title} />
+        <button type='submit' className='bt'>
+          {/*<img src={addButton} />*/}
+          <i className='material-icons bt-base'>add</i>
+        </button>
         <div className='input-nudge'>
             { title.touched ? title.error : null }
         </div>
-        <button type='submit' className='button-submit'>Submit</button>
       </form>
     );
   }

@@ -4,58 +4,97 @@
     flex-direction: row
 }
 
+// MENU MENU MENU
 .menu {
     height: 100vh;
-    background-color: $blue-20;
+    background-color: $blue-100;
     min-width: 18rem;
+    width: 18rem;
     // layout
     display: grid;
     grid-template-areas: "header" "body" "footer";
-    grid-template-rows: 5rem 0fr 5rem;
+    grid-template-rows: 4.25rem 0fr 4.00rem;
     min-height: 100vh;
     overflow-y: scroll;
     position: fixed;
-}
-
-.menu-header {
-    grid-area: header;
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    text-align: center;
-    line-height: 1.5;
-    padding: 1rem;
-    color: $blue-5;
-    margin: 0px 0px 12px 0px;
-    font-size: 1.5rem;
-    background-color: $teal-20;
-    display: flex;
-}
-
-:root {
-    --header-height: calc(1rem * 1.5 + 1rem * 2);
-}
-
-.menu-body {
-    grid-area: body;
-    li {
-        height: 5rem;
+    .header {
+        grid-area: header;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        text-align: center;
+        line-height: 1.5;
+        padding: 1rem;
+        color: $blue-5;
+        font-size: 1.5rem;
+        background-color: $teal-100;
+        display: flex;
+        .user-name {
+            margin-right: 7.5rem;
+        }
+    }
+    .body {
+        grid-area: body;
+        li {
+            height: 5rem;
+            border-bottom: .1rem solid $blue-60;
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            padding-left: 1.5rem;
+            color: $blue-20;
+        }
+        .active-item {
+            background-color: $red-80;
+        }
+    }
+    .footer {
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        background-color: $teal-100;
+        grid-area: footer;
+        position: sticky;
+        display: flex;
+        justify-content: left;
+        padding: 1.75rem 0rem 0rem 1rem;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        .input-totem {
+            box-sizing: border-box;
+            background-color: $teal-100;
+            border-radius: .1rem;
+            border: none;
+            border-bottom: .1rem solid $blue-100;
+            height: 1.5rem;
+            width: 80%;
+            font-size: 1rem;
+        }
+        .input-totem::-webkit-input-placeholder {
+            color: $blue-100;
+        }
+        .input-nudge {
+            color: $red-60;
+            font-size: .7rem;
+            position: absolute;
+            top: 1.25rem;
+        }
+        .bt {
+            background-color: transparent;
+            border: none;
+            padding: 0rem;
+            margin-top: -0.4rem;
+            margin-right: .5rem;
+            i {
+                font-size: 2.5rem;
+            }
+        }
     }
 }
 
-.menu-footer {
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    background-color: $teal-100;
-    grid-area: footer;
-    position: sticky;
-}
-
-:root {
-    --footer-height: calc(.8rem * 1.5 + .5rem * 2);
-}
-
+// TOTEM TOTEM TOTEM
 .totem-view {
+    padding-top: 15rem;
     overflow-y: hidden;
 }

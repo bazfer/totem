@@ -6,7 +6,7 @@ import MenuTotem from './menu_totem'
 
 const MenuList = ({ totems, onTotemClick, activeTotem, userName }) => { 
   return(
-    <div className='menu-body'>
+    <div className='body'>
       <ul>
         {totems.map((totem) => 
           <MenuTotem 
