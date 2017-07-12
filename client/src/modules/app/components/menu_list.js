@@ -6,14 +6,8 @@ import MenuTotem from './menu_totem'
 
 const MenuList = ({ totems, onTotemClick, activeTotem, userName }) => { 
   return(
-    <div className='menu-list'>
-      <div className='menu-list-header'>
-        <div className='header-text'>
-          {userName}
-        </div>
-        <Link className="nav-link" to="/signout">Sign Out</Link>
-      </div>
-      <ul className='menu-list-body'>
+    <div className='menu-body'>
+      <ul>
         {totems.map((totem) => 
           <MenuTotem 
             key={totem.id} 

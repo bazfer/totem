@@ -23,7 +23,7 @@ class AddTotemController extends Component {
   render() {
     const { fields: { title }, handleSubmit } = this.props;
     return (
-      <form className='menu-add-item' onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+      <form className='menu-footer' onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         {/*<label className='input-label'>title</label>*/}
         <input placeholder='Create a Totem' type='text' className='input-field' {...title} />
         <div className='input-nudge'>

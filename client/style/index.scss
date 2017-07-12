@@ -3,13 +3,20 @@
 @import 'reset';
 @import 'fonts';
 @import 'color-palette';
+
+/* these rules will eventually be moved somewhere else */
+
 html {
     font-size: 24px;
     font-family: Museo300-Regular, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 
 /* MODULES */
 
 @import 'app';
-@import 'menu';

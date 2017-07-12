@@ -1,5 +1,61 @@
 .app {
     width: 100%;
+    display: flex;
+    flex-direction: row
+}
+
+.menu {
+    height: 100vh;
+    background-color: $blue-20;
+    min-width: 18rem;
+    // layout
     display: grid;
-    grid-template-columns: 456px 910px;
+    grid-template-areas: "header" "body" "footer";
+    grid-template-rows: 5rem 0fr 5rem;
+    min-height: 100vh;
+    overflow-y: scroll;
+    position: fixed;
+}
+
+.menu-header {
+    grid-area: header;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    text-align: center;
+    line-height: 1.5;
+    padding: 1rem;
+    color: $blue-5;
+    margin: 0px 0px 12px 0px;
+    font-size: 1.5rem;
+    background-color: $teal-20;
+    display: flex;
+}
+
+:root {
+    --header-height: calc(1rem * 1.5 + 1rem * 2);
+}
+
+.menu-body {
+    grid-area: body;
+    li {
+        height: 5rem;
+    }
+}
+
+.menu-footer {
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: $teal-100;
+    grid-area: footer;
+    position: sticky;
+}
+
+:root {
+    --footer-height: calc(.8rem * 1.5 + .5rem * 2);
+}
+
+.totem-view {
+    overflow-y: hidden;
 }
