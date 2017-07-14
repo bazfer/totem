@@ -9,8 +9,10 @@ export const FETCH_USER_DATA = 'fetch_user_data'
 export const ADD_TOTEM = 'add_totem';
 export const ADD_TOTEM_ERROR = 'add_totem_error';
 
-// ACTIVE TOTEM
 export const CHANGE_ACTIVE_TOTEM = 'change_active_totem';
 
-// DELETE TOTEM
 export const DELETE_TOTEM = 'delete_totem';
+
+// BLOCKS
+export const ADD_BLOCK = 'add_block';
+export const ADD_BLOCK_ERROR = 'add_block_error';

@@ -66,6 +66,31 @@ export function addTotemError(error) {
   }
 }
 
+export const addBlock = (id) => {
+  return function(dispatch) {
+    axios.post(`${ROOT_URL}/add_block`, id, {
+      headers: { authorization: localStorage.getItem('token')}
+    })
+    .then(response => {
+      const addData = {
+        blocks: response.data.blocks
+      }
+    })
+    dispatch({ type: ADD_BLOCK, payload: addData });
+    browserHistory.push('app');
+  }
+  .catch(error => {
+    console.log(error);
+  });
+}
+
+export function addBlockError(error) {
+  return {
+    type: ADD_BLOCK_ERROR,
+    payload: error
+  }
+}
+
 export const changeActiveTotem = (id) => ({
   type: CHANGE_ACTIVE_TOTEM,
   payload: id
@@ -87,3 +112,4 @@ export const deleteTotem = (id) => {
     });
   }
 }
+
