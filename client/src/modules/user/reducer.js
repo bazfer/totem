@@ -1,5 +1,5 @@
 import {  FETCH_USER_DATA
-} from '../app/action_types'
+} from '../menu/action_types'
 
 const INITIAL_STATE = {
   user_name: '',

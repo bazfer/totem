@@ -6,7 +6,7 @@ const viewStyle = {
   marginLeft: '800px'
 }
 
-class TotemView extends Component {
+class Stack extends Component {
   render() {
     if(this.props.totem){
       return (
@@ -32,4 +32,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, actions)(TotemView);
+export default connect(mapStateToProps, actions)(Stack);

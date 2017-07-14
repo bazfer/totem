@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import * as actions from './actions';
+import * as actions from './app/actions';
 
-import Menu from './components/menu'
-import Header from '../header'
-import TotemView from './components/totem_view'
+import Menu from './menu/components/menu'
+import Header from './header'
+import Stack from './stack/components/stack'
 
 class App extends Component {
   componentDidMount() {
@@ -16,7 +16,7 @@ class App extends Component {
       return (
         <div className='app'>
           <Menu />
-          <TotemView />
+          <Stack />
         </div>
       );
     } 
