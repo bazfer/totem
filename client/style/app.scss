@@ -6,7 +6,6 @@
 // MENU MENU MENU
 .menu {
     order: 1;
-    grid-area: menu;
     height: 100vh;
     background-color: $blue-100;
     min-width: 18rem;
@@ -17,7 +16,7 @@
     grid-template-rows: 4.25rem 0fr 4.00rem;
     min-height: 100vh;
     overflow-y: scroll;
-    // position: fixed;
+    position: fixed;
     .header {
         position: sticky;
         top: 0;
@@ -101,6 +100,16 @@
     }
 }
 
+// GHOST MENU
+.ghost-menu {
+    // position
+    order: 1;
+    // size
+    height: 100vh;
+    min-width: 18rem;
+    width: 18rem;
+}
+
 // TOTEM TOTEM TOTEM
 .totem {
     // position
@@ -114,8 +123,9 @@
     flex-direction: column;
     .title {
         // position: fixed;
+        margin: 1rem 1rem 1.5rem 0rem;
         order: 1;
-        align-self: center;
+        align-self: flex-end;
     }
     .stack {
         // position
@@ -127,5 +137,17 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
+        .block {
+            // size
+            height: 4rem;
+            width: 12rem;
+            // color
+            background-color: $blue-20;
+            border: .1rem solid $blue-100;
+            // display
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     }
 }

@@ -5,6 +5,7 @@ import { reduxForm } from 'redux-form';
 
 import { addTotem } from '../actions';
 
+// this will change when CDN is added
 const addButton = '../../../../assets/bt-add.svg';
 
 class AddTotemController extends Component {

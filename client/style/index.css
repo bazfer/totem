@@ -167,7 +167,6 @@ html {
 
 .menu {
   order: 1;
-  grid-area: menu;
   height: 100vh;
   background-color: #5a9bc9;
   min-width: 18rem;
@@ -176,7 +175,8 @@ html {
   grid-template-areas: "header" "body" "footer";
   grid-template-rows: 4.25rem 0fr 4.00rem;
   min-height: 100vh;
-  overflow-y: scroll; }
+  overflow-y: scroll;
+  position: fixed; }
   .menu .header {
     position: sticky;
     top: 0;
@@ -246,6 +246,12 @@ html {
       .menu .footer .bt i {
         font-size: 2.5rem; }
 
+.ghost-menu {
+  order: 1;
+  height: 100vh;
+  min-width: 18rem;
+  width: 18rem; }
+
 .totem {
   order: 2;
   z-index: 10;
@@ -254,8 +260,9 @@ html {
   display: flex;
   flex-direction: column; }
   .totem .title {
+    margin: 1rem 1rem 1.5rem 0rem;
     order: 1;
-    align-self: center; }
+    align-self: flex-end; }
   .totem .stack {
     order: 2;
     align-self: center;
@@ -263,5 +270,13 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: flex-end; }
+    .totem .stack .block {
+      height: 4rem;
+      width: 12rem;
+      background-color: #deebf4;
+      border: 0.1rem solid #5a9bc9;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
 
 /*# sourceMappingURL=index.css.map */

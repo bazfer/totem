@@ -16,6 +16,7 @@ class App extends Component {
       return (
         <div className='app'>
           <Menu />
+          <div className='ghost-menu'/>
           <Totem />   
         </div>
       );
