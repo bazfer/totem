@@ -19,21 +19,25 @@ export default function(state = INITIAL_STATE, action) {
       return { ...state, 
                   totems: action.payload.totems,
                   active_totem: action.payload.active_totem,
-                  totem: action.payload.totems[action.payload.active_totem]
+                  totem: action.payload.totem,
+
                   // ticking:
       };
     case ADD_TOTEM:
       return { ...state, 
                   totems: action.payload.totems,
                   active_totem: action.payload.active_totem,
-                  totem: action.payload.totems[action.payload.active_totem]
+                  totem: action.payload.totem
     }
     case ADD_TOTEM_ERROR:
       return { ...state, error: 'FILL HERE'}
     case CHANGE_ACTIVE_TOTEM:
       return { ...state,
                   active_totem: action.payload,
-                  totem: state.totems[action.payload]
+                  totem: {
+                    title: state.totems[action.payload].title,
+                    blocks: state.totems[action.payload].blocks
+                  }
       }
     case DELETE_TOTEM:
       return { ...state,

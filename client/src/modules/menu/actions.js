@@ -16,10 +16,18 @@ export function fetchAllData() {
       headers: { authorization: localStorage.getItem('token') }
     })
       .then(response => {
+        // repackage totem data
+        const repack = response.data.totems[response.data.recent_totem]
+        const totem = { 
+          title: repack.title, 
+          blocks: repack.blocks,
+        };
+        
         // model and deliver app data
         const appData = {
           totems: response.data.totems,
-          active_totem: response.data.recent_totem
+          active_totem: response.data.recent_totem,
+          totem: totem
         } 
         dispatch({ type: FETCH_APP_DATA, payload: appData })
 
@@ -43,9 +51,17 @@ export function addTotem({ title }) {
             headers: { authorization: localStorage.getItem('token')}
           }) 
       .then(response => {
+        // repackaging
+        
+        const repack = response.data.totems[response.data.recent_totem]
+        const totem = { 
+          title: repack.title, 
+          blocks: repack.blocks,
+        };
         const addData = {
           totems: response.data.totems,
-          active_totem: response.data.recent_totem
+          active_totem: response.data.recent_totem,
+          totem: totem
         }
         dispatch({ type: ADD_TOTEM, payload: addData });
         // display newly create totem - use browserHistory.push
@@ -78,9 +94,16 @@ export const deleteTotem = (id) => {
       headers: { authorization: localStorage.getItem('token')}
     })
     .then(response => {
+      const repack = response.data.totems[response.data.recent_totem]
+      const totem = { 
+        title: repack.title, 
+        blocks: repack.blocks,
+      };
+
       const deleteData = {
         totems: response.data.totems,
-        active_totem: response.data.recent_totem
+        active_totem: response.data.recent_totem,
+        totem: totem
       }
       dispatch({type: DELETE_TOTEM, payload: deleteData});
       browserHistory.push('/app')
