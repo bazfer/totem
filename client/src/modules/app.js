@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import * as actions from './app/actions';
+import * as actions from './menu/actions';
 
 import Menu from './menu/components/menu'
 import Header from './header'
-import Stack from './stack/components/stack'
+import Totem from './totem/components/totem'
 
 class App extends Component {
   componentDidMount() {
@@ -16,7 +16,7 @@ class App extends Component {
       return (
         <div className='app'>
           <Menu />
-          <Stack />
+          <Totem />   
         </div>
       );
     } 
@@ -27,7 +27,6 @@ class App extends Component {
 function mapStateToProps(state) {
   return { 
     authenticated: state.auth.authenticated,
-    user_name: state.app.user_name,
     totems: state.app.totems,
     active_totem: state.app.active_totem
   };

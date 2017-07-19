@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router'
 
 import MenuTotem from './menu_totem'
 
@@ -9,7 +8,7 @@ const MenuList = ({
   onTotemClick,
   onDeleteClick, 
   activeTotem, 
-  userName }) => { 
+  userName }) => {
     return(
       <div className='body'>
         <ul>

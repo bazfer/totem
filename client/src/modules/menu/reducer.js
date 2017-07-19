@@ -13,28 +13,33 @@ const INITIAL_STATE = {
 }
 
 export default function(state = INITIAL_STATE, action) {
+  
   switch(action.type) {
     case FETCH_APP_DATA:
       return { ...state, 
                   totems: action.payload.totems,
                   active_totem: action.payload.active_totem,
+                  totem: action.payload.totems[action.payload.active_totem]
                   // ticking:
       };
     case ADD_TOTEM:
       return { ...state, 
                   totems: action.payload.totems,
                   active_totem: action.payload.active_totem,
+                  totem: action.payload.totems[action.payload.active_totem]
     }
     case ADD_TOTEM_ERROR:
       return { ...state, error: 'FILL HERE'}
     case CHANGE_ACTIVE_TOTEM:
       return { ...state,
-                  active_totem: action.payload
+                  active_totem: action.payload,
+                  totem: state.totems[action.payload]
       }
     case DELETE_TOTEM:
-      return{ ...state,
-                  totems: action.payload,
-                  active_totem: 0
+      return { ...state,
+                  totems: action.payload.totems,
+                  active_totem: 0,
+                  totem: action.payload.totems[0]
                 }
     default:
       return state;

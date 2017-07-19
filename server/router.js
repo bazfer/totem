@@ -113,8 +113,6 @@ module.exports = (app) => {
       .then(() => User.findOne({ _id: id })
       .then((data) => {
         // update recent_totem to enwly created totem
-        
-        console.log(data);
         res.json(data);
       }))
     .catch((err) => {
@@ -124,6 +122,7 @@ module.exports = (app) => {
   });
     
   app.post('/insert_block', requireAuth, function(req, res) {
+    console.log(req);
     let totem = req.headers.totem_index;  
     let block = req.body;
     let id = req.user._id;
@@ -146,16 +145,17 @@ module.exports = (app) => {
   app.delete('/delete_totem', requireAuth, function(req, res) {
     let totem = req.body.id;
     let id = req.user._id;
-    console.log(req);
     User.findOne({ _id: id })
       .then((user) => {
         let totem_id = user.totems[totem]._id;
         user.totems.pull({ _id: totem_id });
+        user.recent_totem = user.totems.length-1;
+        console.log(user.recent_totem);
         return user.save();
       })
       .then(() => User.findOne({ _id: id })
       .then((data) => {
-        res.json(data.totems);
+        res.json(data);
       }))
     .catch((err) => {
       console.log(err);

@@ -19,7 +19,7 @@ export function fetchAllData() {
         // model and deliver app data
         const appData = {
           totems: response.data.totems,
-          active_totem: response.data.recent_totem,
+          active_totem: response.data.recent_totem
         } 
         dispatch({ type: FETCH_APP_DATA, payload: appData })
 
@@ -78,8 +78,11 @@ export const deleteTotem = (id) => {
       headers: { authorization: localStorage.getItem('token')}
     })
     .then(response => {
-      console.log(response);
-      dispatch({type: DELETE_TOTEM, payload: response.data});
+      const deleteData = {
+        totems: response.data.totems,
+        active_totem: response.data.recent_totem
+      }
+      dispatch({type: DELETE_TOTEM, payload: deleteData});
       browserHistory.push('/app')
     })
     .catch(error => {
