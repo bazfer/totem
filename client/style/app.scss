@@ -102,7 +102,15 @@
 }
 
 // TOTEM TOTEM TOTEM
-.totem-view {
-    padding-top: 15rem;
+.totem {
+    // margin-top: 1rem;
+    // margin-left: 19rem;
+    z-index: 10;
     overflow-y: hidden;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    .title {
+        position: fixed;
+    }
 }

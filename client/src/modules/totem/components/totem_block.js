@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const TotemBlock = ({ notes }) => {
-  
   return (
     <li className='block'>
       {notes}

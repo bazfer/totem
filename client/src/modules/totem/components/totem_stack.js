@@ -3,22 +3,23 @@ import PropTypes from 'prop-types'
 
 import TotemBlock from './totem_block'
 
-const viewStyle = {
-  marginLeft: '800px'
-}
-
 const TotemStack = ({ totem }) => {
-  const blocks = totem.blocks;
-  if(blocks) {
+  // async valve
+  if(totem.blocks) {
+    // shallow copy to reverse array
+    // careful with this, you are creating a copy of your state
+    // make sure this data doesn't flow anywhere but dies on render
+    let blocks = totem.blocks.slice(0).reverse();
     return(
-      <div style={viewStyle}>
-        {totem.title}
-        <ul>
+      <div className='totem'>
+        <div className='title'>
+          {totem.title}
+        </div>
+        <ul className='stack'>
           {blocks.map((block, i) => {
-            
             return(
               <TotemBlock 
-                key={block._id}
+                key={i}
                 {...block}
                 notes={block.notes}
               />
@@ -35,8 +36,7 @@ const TotemStack = ({ totem }) => {
         Loading
       </div>
     )
-  }
-  
+  } 
 }
 
 TotemStack.propTypes = {

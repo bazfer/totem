@@ -12,7 +12,7 @@ const MenuList = ({
     return(
       <div className='body'>
         <ul>
-          {totems.map((totem) => 
+          {totems.slice(0).reverse().map((totem) => 
             <MenuTotem 
               key={totem.id} 
               {...totem} 
