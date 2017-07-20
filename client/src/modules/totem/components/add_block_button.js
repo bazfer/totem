@@ -6,6 +6,7 @@ const AddBlockButton = ({onAddBlockClick}) => {
     <button
       onClick={onAddBlockClick}
       type='button'
+      className='add-block'
     >
       Add
     </button>

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { AddBlock } from '../../menu/actions'
+import { AddBlock } from '../actions'
 
 import AddBlockButton from '../components/add_block_button'
 

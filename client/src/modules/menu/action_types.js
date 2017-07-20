@@ -14,4 +14,4 @@ export const CHANGE_ACTIVE_TOTEM = 'change_active_totem';
 export const DELETE_TOTEM = 'delete_totem';
 
 // BLOCKS
-export const ADD_BLOCK = 'add_block';
+// export const ADD_BLOCK = 'add_block';

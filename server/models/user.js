@@ -22,6 +22,9 @@ const userSchema = new Schema({
     type: Number,
     default: 0
   }, 
+  isRunning: {
+    type: Boolean
+  },
   totems: [Totem]
 }, { timestamps: true });
 

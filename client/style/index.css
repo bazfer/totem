@@ -278,5 +278,10 @@ html {
       display: flex;
       justify-content: center;
       align-items: center; }
+  .totem .add-block {
+    width: 4rem;
+    height: 4rem;
+    margin-left: 1rem;
+    margin-top: 1rem; }
 
 /*# sourceMappingURL=index.css.map */

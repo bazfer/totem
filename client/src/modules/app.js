@@ -28,8 +28,8 @@ class App extends Component {
 function mapStateToProps(state) {
   return { 
     authenticated: state.auth.authenticated,
-    totems: state.app.totems,
-    active_totem: state.app.active_totem
+    totems: state.menu.totems,
+    active_totem: state.menu.active_totem
   };
 }
 

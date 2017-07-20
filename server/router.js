@@ -141,6 +141,7 @@ module.exports = (app) => {
     User.findOne({ _id: id })
       .then((user) => {
         user.totems[totem].blocks.push(block);
+        user.recent_totem = totem;
         return user.save();
       })
       .then(() => User.findOne({ _id: id })
