@@ -8,7 +8,8 @@ import {  FETCH_APP_DATA,
 const INITIAL_STATE = {
   totems: new Array,
   active_totem: 0,
-  totem: {}
+  totem: {},
+  running: false
   // ticking: new Boolean
 }
 

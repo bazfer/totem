@@ -7,8 +7,8 @@ import userReducer from './modules/user/reducer'
 const rootReducer = combineReducers({
   form,
   auth: authReducer,
-  app: appReducer,
-  user: userReducer
+  user: userReducer,
+  app: appReducer
   
 });
 

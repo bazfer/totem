@@ -117,14 +117,26 @@ module.exports = (app) => {
       }))
     .catch((err) => {
       console.log(err);
-      console.log('ERROR ABOVE');
     });
   });
     
   app.post('/insert_block', requireAuth, function(req, res) {
-    console.log(req);
-    let totem = req.headers.totem_index;  
-    let block = req.body;
+    const block = {
+      status: 'running',
+      time: 0,
+      notes: '',
+      milestone: false,
+      isCrown: false,
+      isBase: false,
+      protoblock: "594aa2d9c122f312ecdbb144"
+    }
+    // console.log('HEADERS')
+    // console.log(req.headers);
+    // console.log('BODY')
+    // console.log(req.body)
+    // console.log('USER')
+    // console.log(req.user)
+    let totem = req.body.active_totem;  
     let id = req.user._id;
     User.findOne({ _id: id })
       .then((user) => {
@@ -133,6 +145,8 @@ module.exports = (app) => {
       })
       .then(() => User.findOne({ _id: id })
       .then((data) => {
+        // console.log("DATA")
+        // console.log(data);
         res.json(data);
       }))
     .catch((err) => {

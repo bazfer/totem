@@ -4,7 +4,7 @@ const Schema =  mongoose.Schema;
 
 const BlockSchema = new Schema({
   
-  // status - 'active', 'paused', 'completed'
+  // status - 'running' 'completed'
   status: {
     type: String,
     required: true

@@ -1,20 +1,16 @@
 import { connect } from 'react-redux'
 
-import { addBlock } from '../actions'
+import { AddBlock } from '../../menu/actions'
 
-import AddBlock from '../components/add_block'
+import AddBlockButton from '../components/add_block_button'
 
-const mapStateToProps = (state) => {
-  
-}
-
-const mapStateToProps = {
-
+const mapDispatchToProps = {
+  onAddBlockClick: AddBlock
 }
 
 const AddBlockController = connect(
-  mapStateToProps, 
+  null, 
   mapDispatchToProps
-)(AddBlock)
+)(AddBlockButton)
 
 export default AddBlockController

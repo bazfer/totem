@@ -5,7 +5,8 @@ import {  FETCH_APP_DATA,
           ADD_TOTEM, 
           ADD_TOTEM_ERROR,
           CHANGE_ACTIVE_TOTEM,
-          DELETE_TOTEM
+          DELETE_TOTEM,
+          ADD_BLOCK
 } from './action_types';
 
 const ROOT_URL = 'http://localhost:3090';
@@ -43,6 +44,8 @@ export function fetchAllData() {
       });
   }
 }
+
+// MENU MENU MENU
 
 export function addTotem({ title }) {
   return function(dispatch) {
@@ -113,4 +116,28 @@ export const deleteTotem = (id) => {
     });
   }
 }
+
+// TOTEM TOTEM TOTEM
+
+export const AddBlock = () => {
+  return function(dispatch, getState) {
+    let active_totem = getState().app.active_totem;
+    axios.post(`${ROOT_URL}/insert_block`, {active_totem}, {
+      headers: { authorization: localStorage.getItem('token')}
+    })
+    .then(response => {
+      //repack as needed
+      
+      // dispatch
+      dispatch({type: ADD_BLOCK, payload: response});
+      // redirect browser
+      browserHistory.push('/app')
+    })
+    .catch(error => {
+      console.log(error)
+    });
+  }
+}
+
+
 
