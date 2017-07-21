@@ -38,7 +38,6 @@ export default function(state = INITIAL_STATE, action) {
                   blocks: action.payload.totems[0].blocks
                 }
     case ADD_BLOCK:
-    console.log(action.payload)
       return { ...state,
                   blocks: action.payload.blocks
             }

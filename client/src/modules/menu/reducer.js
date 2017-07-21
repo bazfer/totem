@@ -28,7 +28,6 @@ export default function(state = INITIAL_STATE, action) {
     case ADD_TOTEM_ERROR:
       return { ...state, error: 'FILL HERE'}
     case CHANGE_ACTIVE_TOTEM:
-    console.log(action.payload.active_totem)
       return { ...state,
                   active_totem: action.payload.active_totem
       }
