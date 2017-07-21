@@ -3,20 +3,20 @@ import PropTypes from 'prop-types'
 
 import TotemBlock from './totem_block'
 
-const TotemStack = ({ totem }) => {
+const TotemStack = ({ blocks, title, isRunning }) => {
   // async valve
-  if(totem.blocks) {
+  if(blocks) {
     // shallow copy to reverse array
     // careful with this, you are creating a copy of your state
     // make sure this data doesn't flow anywhere but dies on render
-    let blocks = totem.blocks.slice(0).reverse();
+    let blockStack = blocks.slice(0).reverse();
     return(
       <div className='totem'>
         <div className='title'>
-          {totem.title}
+          {title}
         </div>
         <ul className='stack'>
-          {blocks.map((block, i) => {
+          {blockStack.map((block, i) => {
             return(
               <TotemBlock 
                 key={i}
@@ -39,9 +39,25 @@ const TotemStack = ({ totem }) => {
   } 
 }
 
+// // const TotemStack = ({ blocks, title, isRunning }) => {
+// const TotemStack = ({ title }) => {
+//   // async valve
+  
+//     // shallow copy to reverse array
+//     // careful with this, you are creating a copy of your state
+//     // make sure this data doesn't flow anywhere but dies on render
+   
+//     return(
+//       <div className='totem'>
+//         {title}
+//       </div>
+//     )
+// }
+
 TotemStack.propTypes = {
-  totem: PropTypes.object.isRequired,
-  // totem_title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  blocks: PropTypes.array.isRequired,
+  isRunning: PropTypes.bool.isRequired
 }
 
 export default TotemStack

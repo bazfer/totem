@@ -2,17 +2,14 @@ import {  FETCH_APP_DATA,
           ADD_TOTEM, 
           ADD_TOTEM_ERROR, 
           CHANGE_ACTIVE_TOTEM,
-          DELETE_TOTEM,
-          ADD_BLOCK
-} from './action_types';
+          DELETE_TOTEM
+} from './action_types'
+
+import { ADD_BLOCK } from "../totem/action_types"
 
 const INITIAL_STATE = {
   totems: new Array,
-  active_totem: 0,
-  isRunning: false,
-  totem: {},
-  
-  // ticking: new Boolean
+  active_totem: 0
 }
 
 export default function(state = INITIAL_STATE, action) {
@@ -21,38 +18,28 @@ export default function(state = INITIAL_STATE, action) {
     case FETCH_APP_DATA:
       return { ...state, 
                   totems: action.payload.totems,
-                  active_totem: action.payload.active_totem,
-                  totem: action.payload.totem,
-
-                  // ticking:
+                  active_totem: action.payload.active_totem
       };
     case ADD_TOTEM:
       return { ...state, 
                   totems: action.payload.totems,
-                  active_totem: action.payload.active_totem,
-                  totem: action.payload.totem
+                  active_totem: action.payload.active_totem
     }
     case ADD_TOTEM_ERROR:
       return { ...state, error: 'FILL HERE'}
     case CHANGE_ACTIVE_TOTEM:
+    console.log(action.payload.active_totem)
       return { ...state,
-                  active_totem: action.payload,
-                  totem: {
-                    title: state.totems[action.payload].title,
-                    blocks: state.totems[action.payload].blocks
-                  }
+                  active_totem: action.payload.active_totem
       }
     case DELETE_TOTEM:
       return { ...state,
                   totems: action.payload.totems,
-                  active_totem: 0,
-                  totem: action.payload.totems[0]
+                  active_totem: 0
                 }
     case ADD_BLOCK:
-                console.log(action.payload)
       return { ...state,
-                  totems: action.payload.totems,
-                  totem: action.payload.totem
+                  totems: action.payload.totems 
             }
     default:
       return state;

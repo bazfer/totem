@@ -29,8 +29,8 @@ const MenuList = ({
 MenuList.propTypes = {
   totems: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired
+      tag: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired
     }).isRequired
   ).isRequired,
   onTotemClick: PropTypes.func.isRequired,

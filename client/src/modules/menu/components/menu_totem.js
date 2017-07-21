@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const MenuTotem = ({ onTotemClick, onDeleteClick, title, active }) => {
+const MenuTotem = ({ onTotemClick, onDeleteClick, tag, active }) => {
   return (
     <li
       onClick={onTotemClick} 
       className={active ? "active-item" : "item"}
     >
-      {title}
+      {tag}
       <button
         onClick={onDeleteClick} 
         type='button' 
@@ -23,7 +23,7 @@ const MenuTotem = ({ onTotemClick, onDeleteClick, title, active }) => {
 MenuTotem.propTypes = {
   onTotemClick: PropTypes.func.isRequired,
   onDeleteClick: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
+  tag: PropTypes.string.isRequired,
   active: PropTypes.bool.isRequired
 }
 

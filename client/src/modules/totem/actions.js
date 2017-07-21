@@ -11,16 +11,12 @@ export const AddBlock = () => {
       headers: { authorization: localStorage.getItem('token')}
     })
     .then(response => {
-      console.log(response)
       // repack as needed
       const repack = response.data.totems[response.data.recent_totem]
-      const totem = {
-        title: repack.title,
-        blocks: repack.blocks
-      }
+      
       const addData = {
         totems: response.data.totems,
-        totem
+        blocks: repack.blocks
       }
       // dispatch
       dispatch({type: ADD_BLOCK, payload: addData});

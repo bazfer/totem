@@ -4,7 +4,9 @@ import TotemStack from '../components/totem_stack'
 
 const mapStateToProps = (state) => {
   return({
-    totem: state.menu.totem
+    title: state.totem.title,
+    blocks: state.totem.blocks,
+    isRunning: state.totem.isRunning
   })
 }
   

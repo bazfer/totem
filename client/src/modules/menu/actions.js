@@ -5,9 +5,10 @@ import {  FETCH_APP_DATA,
           ADD_TOTEM, 
           ADD_TOTEM_ERROR,
           CHANGE_ACTIVE_TOTEM,
-          DELETE_TOTEM,
-          ADD_BLOCK
+          DELETE_TOTEM
 } from './action_types';
+
+import { ADD_BLOCK } from '../totem/action_types'
 
 const ROOT_URL = 'http://localhost:3090';
 
@@ -19,16 +20,14 @@ export function fetchAllData() {
       .then(response => {
         // repackage totem data
         const repack = response.data.totems[response.data.recent_totem]
-        const totem = { 
-          title: repack.title, 
-          blocks: repack.blocks,
-        };
-        
         // model and deliver app data
         const appData = {
+          // to menu reducer
           totems: response.data.totems,
           active_totem: response.data.recent_totem,
-          totem: totem
+          // to totem reducer
+          title: repack.title,
+          blocks: repack.blocks 
         } 
         dispatch({ type: FETCH_APP_DATA, payload: appData })
 
@@ -55,16 +54,14 @@ export function addTotem({ title }) {
           }) 
       .then(response => {
         // repackaging
-        
         const repack = response.data.totems[response.data.recent_totem]
-        const totem = { 
-          title: repack.title, 
-          blocks: repack.blocks,
-        };
         const addData = {
+          // to menu reducer
           totems: response.data.totems,
           active_totem: response.data.recent_totem,
-          totem: totem
+          // to totem reducer
+          title: repack.title,
+          blocks: repack.blocks 
         }
         dispatch({ type: ADD_TOTEM, payload: addData });
         // display newly create totem - use browserHistory.push
@@ -85,10 +82,25 @@ export function addTotemError(error) {
   }
 }
 
-export const changeActiveTotem = (id) => ({
-  type: CHANGE_ACTIVE_TOTEM,
-  payload: id
-})
+// export const changeActiveTotem = (id) => {
+//   return {
+//     // used by both menu and totem reducers
+//     type: CHANGE_ACTIVE_TOTEM,
+//     payload: id
+//   }
+// }
+
+export const changeActiveTotem = (id) => {
+  return function(dispatch, getState) {
+    const changeData = {
+      active_totem: id,
+      title: getState().menu.totems[id].title,
+      blocks: getState().menu.totems[id].blocks
+    }
+
+    dispatch({type: CHANGE_ACTIVE_TOTEM, payload: changeData}) 
+  }
+}
 
 export const deleteTotem = (id) => {
   return function(dispatch) {
@@ -98,15 +110,13 @@ export const deleteTotem = (id) => {
     })
     .then(response => {
       const repack = response.data.totems[response.data.recent_totem]
-      const totem = { 
-        title: repack.title, 
-        blocks: repack.blocks,
-      };
-
       const deleteData = {
+        // to menu reducer
         totems: response.data.totems,
         active_totem: response.data.recent_totem,
-        totem
+        // to totem reducer
+        title: repack.title,
+        blocks: repack.blocks 
       }
       dispatch({type: DELETE_TOTEM, payload: deleteData});
       browserHistory.push('/app')
