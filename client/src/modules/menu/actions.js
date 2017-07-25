@@ -10,6 +10,8 @@ import {  FETCH_APP_DATA,
 
 import { ADD_BLOCK } from '../totem/action_types'
 
+import { transformToHMS } from '../../services/time_helpers'
+
 const ROOT_URL = 'http://localhost:3090';
 
 export function fetchAllData() {
@@ -20,6 +22,8 @@ export function fetchAllData() {
       .then(response => {
         // repackage totem data
         const repack = response.data.totems[response.data.recent_totem]
+        // stopwatch start calcs
+        const stopwatch = transformToHMS(repack.blocks[repack.blocks.length-1].createdAt)
         // model and deliver app data
         const appData = {
           // to menu reducer
@@ -27,8 +31,11 @@ export function fetchAllData() {
           active_totem: response.data.recent_totem,
           // to totem reducer
           title: repack.title,
-          blocks: repack.blocks 
+          blocks: repack.blocks,
+          isRunning: response.data.isRunning,
+          stopwatch: stopwatch
         } 
+        
         dispatch({ type: FETCH_APP_DATA, payload: appData })
 
         // model and deliver user data
@@ -40,7 +47,7 @@ export function fetchAllData() {
         }
         
         dispatch({ type: FETCH_USER_DATA, payload: userData })
-      });
+      })
   }
 }
 
@@ -61,7 +68,8 @@ export function addTotem({ title }) {
           active_totem: response.data.recent_totem,
           // to totem reducer
           title: repack.title,
-          blocks: repack.blocks 
+          blocks: repack.blocks,
+          isRunning: response.data.isRunning 
         }
         dispatch({ type: ADD_TOTEM, payload: addData });
         // display newly create totem - use browserHistory.push

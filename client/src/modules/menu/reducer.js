@@ -5,7 +5,7 @@ import {  FETCH_APP_DATA,
           DELETE_TOTEM
 } from './action_types'
 
-import { ADD_BLOCK } from "../totem/action_types"
+import { ADD_BLOCK, STOP_BLOCK } from "../totem/action_types"
 
 const INITIAL_STATE = {
   totems: new Array,
@@ -19,6 +19,7 @@ export default function(state = INITIAL_STATE, action) {
       return { ...state, 
                   totems: action.payload.totems,
                   active_totem: action.payload.active_totem
+                  
       };
     case ADD_TOTEM:
       return { ...state, 
@@ -37,6 +38,10 @@ export default function(state = INITIAL_STATE, action) {
                   active_totem: 0
                 }
     case ADD_BLOCK:
+      return { ...state,
+                  totems: action.payload.totems 
+            }
+    case STOP_BLOCK:
       return { ...state,
                   totems: action.payload.totems 
             }

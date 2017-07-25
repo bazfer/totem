@@ -13,7 +13,7 @@ import Signup from './modules/auth/components/signup';
 import App from './modules/app';
 import RequireAuth from './modules/auth/components/require_auth';
 import Landing from './modules/landing';
-import Stack from './modules/stack/components/stack';
+import Stack from './modules/totem/components/totem_stack';
 
 import rootReducer from './root_reducer';
 import { AUTH_USER } from './modules/auth/action_types';

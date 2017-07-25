@@ -17,8 +17,9 @@ module.exports = (app) => {
   app.post('/signup', Authentication.signup);
   app.get('/', requireAuth, function(req, res) {
     // extract user data from req and send it to the client
-  
+    
     let user = req.user;
+    console.log(user)
     res.send(user);
   });
 
@@ -31,6 +32,7 @@ module.exports = (app) => {
     let id = req.user._id;
     User.findOne({ _id: id })
       .then((data) => {
+        
         res.json(data);
     })
     .catch((err) => {
@@ -119,7 +121,8 @@ module.exports = (app) => {
       console.log(err);
     });
   });
-    
+  
+  // Create a Block
   app.post('/insert_block', requireAuth, function(req, res) {
     const block = {
       status: 'running',
@@ -130,19 +133,18 @@ module.exports = (app) => {
       isBase: false,
       protoblock: "594aa2d9c122f312ecdbb144"
     }
-    // console.log('HEADERS')
-    // console.log(req.headers);
-    // console.log('BODY')
-    // console.log(req.body)
-    // console.log('USER')
-    // console.log(req.user)
+    
     let totem = req.body.active_totem;  
     let id = req.user._id;
     User.findOne({ _id: id })
       .then((user) => {
-        user.totems[totem].blocks.push(block);
-        user.recent_totem = totem;
+        // if stopwatch is not running, start running it
+        // if(user.isRunning === false) {
+          user.totems[totem].blocks.push(block);
+          user.recent_totem = totem;
+          user.isRunning = true;
         return user.save();
+        // }
       })
       .then(() => User.findOne({ _id: id })
       .then((data) => {
@@ -154,6 +156,27 @@ module.exports = (app) => {
       console.log(err);
     });
   });
+
+  // Stop a Block
+  app.put('/stop_block', requireAuth, function(req, res) {
+    let id = req.user._id;
+    User.findOne({ _id: id })
+      .then((user) => {
+        
+        // stop stopwatch
+        user.isRunning = false;
+        // calc final block time
+        return user.save();
+      })
+      .then(() => User.findOne({ _id: id })
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    )
+  })
 
 
   // Delete a Totem
@@ -198,53 +221,7 @@ module.exports = (app) => {
       res.status('Error: ' + err);
     });
   });
-
 }
 
-// TESTING PURPOSES
-// const pb1 = {
 
-// };
 
-// const b1 = {
-//   status: 'active',
-//   time: 123,
-//   notes: ['do I need a "notes" model?'],
-//   milestone: false,
-//   isBase: true,
-//   isCrown: false,
-// };
-
-// const b2 = {
-//   status: 'closed',
-//   time: 123,
-//   notes: 'test test test',
-//   milestone: false,
-//   isBase: true,
-//   isCrown: false,
-// };
-
-// const t2 = {
-//   title: 'Learn to Skate',
-//   block_count: 0,
-//   pixel_height: 0,
-//   time_total: 0,
-//   completed: false,
-//   blocks: [ b2 ]
-// };
-
-// const t1 = {
-//   title: 'Learn to Etch',
-//   block_count: 4,
-//   pixel_height: 120,
-//   time_total: 120,
-//   completed: false,
-//   blocks: [ b1 ]
-// };
-
-// const u1 = new User({
-//   user_name: 'Du',
-//   email: 'fu@fi.com',
-//   password: 'du',
-//   totems: [ t1 ]
-// });

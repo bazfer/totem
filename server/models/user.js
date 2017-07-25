@@ -23,7 +23,8 @@ const userSchema = new Schema({
     default: 0
   }, 
   isRunning: {
-    type: Boolean
+    type: Boolean,
+    isRequired: true
   },
   totems: [Totem]
 }, { timestamps: true });

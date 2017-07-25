@@ -278,7 +278,8 @@ html {
       display: flex;
       justify-content: center;
       align-items: center; }
-  .totem .add-block {
+  .totem .add-block,
+  .totem .stop-block {
     width: 4rem;
     height: 4rem;
     margin-left: 1rem;

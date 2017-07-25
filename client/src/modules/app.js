@@ -15,9 +15,9 @@ class App extends Component {
     if (this.props.authenticated) {
       return (
         <div className='app'>
-          <Menu />
+           <Menu /> 
           <div className='ghost-menu'/>
-           <Totem />     
+            <Totem />      
         </div>
       );
     } 

@@ -30,42 +30,26 @@ console.log('Server listening on:', port);
 // const Block = require('./models/block');
 // const Protoblock = require('./models/Protoblock'); 
 
-// const b2 = {
-//   status: 'closed',
-//   time: 123,
-//   notes: 'test test test',
-//   milestone: false,
-//   isBase: true,
-//   isCrown: false,
-// };
+// var proto001 = {
+//     name: 'Heyoka',
+//     series: 'Alpha',
+//     image_URL: 'protoblock-001.jpg',
+//     weight: 1000,
+//     isReleased: false
+// }
 
-// const t2 = {
-//   title: 'Learn to Skate',
-//   block_count: 0,
-//   pixel_height: 0,
-//   time_total: 0,
-//   completed: false,
-//   blocks: [ b2 ]
-// };
+// Protoblock.create(proto001);
 
-    
-//     User.findOne({ _id: "595529d295ddb605da34df1b" })
-//       .then((user) => {
-//       user.totems.push(t2);
-//       return user.save();
-//     })
+// var x = {
+// 	user_name: "fernando",
+// 	email: "bazfer@gmail.com",
+// 	password: "fb",
+// 	recent_totem: 0,
+// 	isRunning: false,
+// 	totems: new Array
+// }
 
-    // User.findOneAndUpdate(
-    //   { _id: "5950366744e13c5d870d9069" }, 
-    //   { $push: { totems: t2 }},
-    //   { new: true },
-    //   function(err, doc) {
-    //     if(err) {
-    //       console.log(err);
-    //     }
-    //     console.log(doc);
-    //   }
-    // )
+// User.create(x)
 
      
  

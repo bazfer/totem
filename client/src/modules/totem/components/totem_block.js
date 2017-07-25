@@ -1,16 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const TotemBlock = ({ notes }) => {
+const TotemBlock = ({ notes, stopwatch }) => {
   return (
     <li className='block'>
-      {notes}
+      {stopwatch}
     </li>
   )
 }
 
 TotemBlock.propTypes = {
-  notes: PropTypes.string.isRequired
+  notes: PropTypes.string.isRequired,
+  stopwatch: PropTypes.string.isRequired
 }
 
 export default TotemBlock
