@@ -1,2 +1,2 @@
 # totem
-Repository for the productivity app 'Totem'
+Personal learning project
